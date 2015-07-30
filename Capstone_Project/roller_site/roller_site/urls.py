@@ -18,5 +18,7 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$',"roller_app.views.index")
+    url(r'^$',"roller_app.views.index"),
+    url(r'^api_dice/$', "roller_app.views.api_dice"),
+    url(r'^api_dice_roll/(?P<number>[0-9]+)/$',"roller_app.views.api_dice_roll")
 ]

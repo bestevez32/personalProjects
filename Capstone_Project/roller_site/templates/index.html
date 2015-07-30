@@ -3,12 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
+    <script>
+        function roll_result(response) {
+            if (response.target.readyState === 4) {
+                console.log(response.target.responseText);
+                data = JSON.parse(response.target.responseText);
+                var div = document.createElement("div");
+                div.innerHTML = data.result;
+                document.body.appendChild(div)
+            }
+        }
+
+        console.log("Head Script");
+        function roll(number) {
+            request = new XMLHttpRequest();
+            request.onreadystatechange = roll_result;
+            request.open('GET', "/api_dice_roll/" + number + "/", true);
+            request.send()
+        }
+        function rollClick(event){
+            var image=event.target;
+            var button=image.parentElement;
+            console.log(button);
+            var id=button.getAttribute("id");
+            console.log(id);
+            var parts=id.split("_");
+            var number=parts[1];
+            console.log(number);
+            roll(number)
+
+
+        }
+        document.addEventListener("DOMContentLoaded", function () {
+            var x = document.getElementsByClassName("die");
+            var i;
+            for (i = 0; i < x.length; i++) {
+                x[i].addEventListener("click", rollClick, true)
+            }
+        })
+
+
+    </script>
 </head>
 <body>
-{{ roll }}
-{#This is django template language#}
-{% for die in dice %}
-{{ die.name }}
-{% endfor %}
+<button class="die" id="d_4"><img src="images\d4.jpg" width="70" height="70"/>d4</button>
+<button class="die" id="d_6"><img src="http://ecx.images-amazon.com/images/I/41ZrRCM%2BwvL.jpg" width="70" height="70"/>d6
+</button>
+<button class="die" id="d_8"><img src="http://static2.paizo.com/image/product/catalog/PZO/PZOBITD8TP_500.jpeg"
+                                  width="70" height="70"/>d8
+</button>
+<button class="die" id="d_10"><img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Green-d10-dice.png"
+                                   width="70" height="70"/>d10
+</button>
+<button class="die" id="d_12"><img src="http://static4.paizo.com/image/product/catalog/PZO/PZOBITD12TB_500.jpeg"
+                                   width="70" height="70"/>d12
+</button>
+<button class="die" id="d_20"><img src="http://ecx.images-amazon.com/images/I/51SHFpRQKSL._SY300_.jpg" width="70"
+                                   height="70"/>d20
+</button>
+
 </body>
 </html>

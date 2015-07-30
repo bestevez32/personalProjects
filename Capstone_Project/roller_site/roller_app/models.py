@@ -8,7 +8,7 @@ class Die(models.Model):
     number = models.IntegerField()
 
     def roll(self):
-        return str(self.name), + randint(1, self.number)
+        return randint(1, self.number)
 
 
 
