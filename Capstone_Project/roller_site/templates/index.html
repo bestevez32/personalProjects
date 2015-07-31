@@ -51,13 +51,22 @@
 <body>
 
     <div id="Header">This space is for character import window. It will contain a block for a character record.
-    It will also contain two drop down menus; one to adjust the map in map-view and one to select a new character.</div>
+    It will also contain two drop down menus; one to adjust the map in map-view and one to select a new character.
+
+    </div>
     <div id="Content1">Game Log window, it will reflect changes to the character during combat.</div>
-    <div id="Content2">Map-View</div>
+    <div id="Content2">
+     <form id="mapForm">Map Select
+        <select name="maps">
+            <option value="map1">Hinterlands</option>
+            <option value="map2">Sandpoint</option>
+            <option value="map3">Place Holder</option>
+        </select>
+    </form>
+    </div>
 
-<div id="Footer"></div>
-
-<table>
+<div id="Footer">
+    <table>
     <tr>
         <td><input type="reset" value="Reset Roll" onclick="window.location.reload()"></td>
     </tr>
@@ -76,6 +85,8 @@
     </tr>
     </tfoot>
 </table>
+</div>
+
 
 
 
