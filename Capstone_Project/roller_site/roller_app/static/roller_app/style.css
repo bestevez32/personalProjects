@@ -48,6 +48,15 @@ div{
     border:solid 2px;
 }
 
+#imageToSwap{
+    height: 250px;
+    width:323px;
+}
+
+.image1:hover {
+    width:651px;
+    height:651px;
+}
 
 
 

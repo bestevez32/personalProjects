@@ -9,10 +9,23 @@
             if (response.target.readyState === 4) {
 //                console.log(response.target.responseText);
                 var data = JSON.parse(response.target.responseText);
-                var element=document.getElementById("rollResultList");
+                var element=document.getElementById("roll_result_data");
                 element.innerHTML+=data.result + ", ";
             }
         }
+
+        function reset_roll(){
+            var element=document.getElementById("roll_result_data");
+                element.innerHTML="&nbsp;";
+        }
+
+        function init(){
+            document.getElementById("roll_reset").addEventListener("click", reset_roll);
+        }
+
+
+        document.addEventListener("DOMContentLoaded",init);
+
 
         console.log("Head Script");
         function roll(number) {
@@ -32,19 +45,38 @@
             var number=parts[1];
             console.log(number);
             roll(number)
-
-
         }
+
         document.addEventListener("DOMContentLoaded", function () {
             var x = document.getElementsByClassName("die");
             var i;
             for (i = 0; i < x.length; i++) {
                 x[i].addEventListener("click", rollClick, true)
             }
-        })
+        });
+
+        function swapImage(){
+            var image = document.getElementById("imageToSwap");
+            var dropd = document.getElementById("map");
+            image.src = dropd.value;
+        }
+
+//        function lightbox_map(){
+//            document.getElementById("dialog_image").addEventListener("click", function(){
+//                document.getElementById("map1").innerHTML="Hello World";
+//            });
+//        }
+
+
+
 
 
     </script>
+    <!--<script>-->
+        <!--function load_dice_roller() {-->
+            <!--document.getElementById("content").innerHTML='<object type="text/html" data="dice_roller.html"></object>;-->
+        <!--}-->
+    <!--</script>-->
 
 
 </head>
@@ -56,19 +88,24 @@
     </div>
     <div id="Content1">Game Log window, it will reflect changes to the character during combat.</div>
     <div id="Content2">
-     <form id="mapForm">Map Select
-        <select name="maps">
-            <option value="map1">Hinterlands</option>
-            <option value="map2">Sandpoint</option>
-            <option value="map3">Place Holder</option>
+     <!--<form id="mapForm">Map Select-->
+    <img id="imageToSwap"/>&emsp;Map Selection:
+        <select id="map" onchange="swapImage()">
+            <option value="">Choose a Map</option>
+            <option id="map1" value="/static/roller_app/images/hinterlands.jpg">Hinterlands</option>
+            <option id="map2" value="/static/roller_app/images/sandpoint.jpg">Sandpoint</option>
+            <option id="map3" value="/static/roller_app/images/lair.jpg">Lair</option>
         </select>
-    </form>
-    </div>
 
+    <!--</form>-->
+    </div>
+<!--<div id="dialog_background"><div id="dialog_content"><img id="dialog_image"></div></div>-->
+
+</body>
 <div id="Footer">
     <table>
     <tr>
-        <td><input type="reset" value="Reset Roll" onclick="window.location.reload()"></td>
+        <td><input type="reset" value="Reset Roll" id="roll_reset"></td>
     </tr>
     <tr>
 
@@ -81,14 +118,9 @@
 </tr>
     <tfoot>
     <tr>
-        <td colspan="6"><div id="rollResultList">Roll Result:</div></td>
+        <td colspan="6"><div id="rollResultList">Roll Result:<span id="roll_result_data"></span></div></td>
     </tr>
     </tfoot>
 </table>
-</div>
-
-
-
-
-</body>
+<!--<div id ="content"><a href ="#" onload="load_dice_roller()"></a> </div>-->
 </html>
