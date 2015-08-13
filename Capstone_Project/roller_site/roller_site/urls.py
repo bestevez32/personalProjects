@@ -18,8 +18,11 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$',"roller_app.views.index"),
+    url(r'^$', "roller_app.views.index"),
     url(r'^api_dice/$', "roller_app.views.api_dice"),
-    url(r'^api_dice_roll/(?P<number>[0-9]+)/$',"roller_app.views.api_dice_roll"),
-    url(r'^$',"roller_app.views.dice_roller")
+    url(r'^api_dice_roll/(?P<number>[0-9]+)/$', "roller_app.views.api_dice_roll"),
+    url(r'^login/$', 'roller_app.views.login_view'),
+    url(r'^register/$', 'roller_app.views.register_view'),
+    url(r'^api_new_character/$', "roller_app.views.api_newCharacter"),
+
 ]

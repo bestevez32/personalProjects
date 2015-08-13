@@ -5,27 +5,90 @@
     <title></title>
     <link href="static/roller_app/style.css" type="text/css" rel="stylesheet"/>
     <script>
+
+        function new_character() {
+            var xmlhttp = new XMLHttpRequest();
+            var form_data = new FormData();
+            form_data.append("newCharacter", document.getElementById("newCharacter").value);
+
+
+            xmlhttp.open("POST", "/api_new_character/", true);
+            xmlhttp.send(form_data);
+        }
+
+        function character_saved(event) {
+            console.log(event.target.responseText)
+
+        }
+
+        function save_character() {
+            var xmlhttp = new XMLHttpRequest();
+            var form_data = new FormData();
+            var character = GAME.characters[0];
+            form_data.append("character_name", character.name);
+            form_data.append("id", character.id);
+            for (var i = 0; i < character.pairs.length; i++) {
+                var pair = character.pairs[i];
+                form_data.append("ability-" + i, pair.ability);
+                form_data.append("die_value-" + i, pair.diceValue);
+            }
+            xmlhttp.onload = character_saved;
+            xmlhttp.open("POST", "/api_new_character/", true);
+            xmlhttp.send(form_data);
+
+
+            console.log(GAME);
+        }
+
+        function selectCharacter(event){
+            var selectedCharacter = event.target.value;
+            drawCharacter(selectedCharacter);
+            console.log(event.target.value);
+        }
+
+
+        function drawCharacterList(){
+            console.log(GAME.characters);
+            var listElement =  select(GAME.characters, "name", "id", 1);
+            listElement.addEventListener("change", selectCharacter);
+            document.body.appendChild(listElement);
+
+        }
+
+        function characterListLoaded(e){
+            GAME.characters = JSON.parse(e.target.responseText);
+            drawCharacterList();
+        }
+
+        function getCharacterList(){
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onload = characterListLoaded;
+            xmlhttp.open("GET", "/api_new_character/", true);
+            xmlhttp.send();
+        }
+
+
+
         function roll_result(response) {
             if (response.target.readyState === 4) {
-//                console.log(response.target.responseText);
                 var data = JSON.parse(response.target.responseText);
-                var element=document.getElementById("roll_result_data");
-                element.innerHTML+=data.result + ", ";
+                var element = document.getElementById("roll_result_data");
+                element.innerHTML += data.result + ", ";
             }
         }
 
-        function reset_roll(){
-            var element=document.getElementById("roll_result_data");
-                element.innerHTML="&nbsp;";
+        function reset_roll() {
+            var element = document.getElementById("roll_result_data");
+            element.innerHTML = "&nbsp;";
         }
 
-        function init(){
+        function init() {
             document.getElementById("roll_reset").addEventListener("click", reset_roll);
+            getCharacterList()
+
         }
 
-
-        document.addEventListener("DOMContentLoaded",init);
-
+        document.addEventListener("DOMContentLoaded", init);
 
         console.log("Head Script");
         function roll(number) {
@@ -35,14 +98,14 @@
             request.send()
         }
 
-        function rollClick(event){
-            var image=event.target;
-            var button=image.parentElement;
+        function rollClick(event) {
+            var image = event.target;
+            var button = image.parentElement;
             console.log(button);
-            var id=button.getAttribute("id");
+            var id = button.getAttribute("id");
             console.log(id);
-            var parts=id.split("_");
-            var number=parts[1];
+            var parts = id.split("_");
+            var number = parts[1];
             console.log(number);
             roll(number)
         }
@@ -55,72 +118,208 @@
             }
         });
 
-        function swapImage(){
+        function swapImage() {
             var image = document.getElementById("imageToSwap");
             var dropd = document.getElementById("map");
             image.src = dropd.value;
         }
 
-//        function lightbox_map(){
-//            document.getElementById("dialog_image").addEventListener("click", function(){
-//                document.getElementById("map1").innerHTML="Hello World";
-//            });
-//        }
+        function iniRoll() {
+            var y = Math.floor(Math.random() * (13 - 2) + 2);
+            var x = document.getElementById("iniOutput").innerHTML = "&nbsp" + y;
+            if (y >= 10) {
+                console.log("Whats Happening!");
+            }
+        }
+
+
+        var GAME = {
+
+            abilities: [
+                {id: 1, name: "Agility"},
+                {id: 2, name: "Smarts"},
+                {id: 3, name: "Strength"},
+                {id: 4, name: "Spirit"},
+                {id: 5, name: "Vigor"}
+            ],
+
+            diceValue: [
+                {id: 1, name: "d4", value: 4},
+                {id: 2, name: "d6", value: 6},
+                {id: 3, name: "d8", value: 8},
+                {id: 4, name: "d10", value: 10},
+                {id: 5, name: "d12", value: 12}
+            ],
+
+            characters: [
+                {
+                    name: "",
+                    id: 0,
+                    "pairs": [
+                        {ability: "1", diceValue: '1'},
+                        {ability: "2", diceValue: '2'},
+                        {ability: "3", diceValue: '3'},
+                        {ability: "4", diceValue: '4'},
+                        {ability: "5", diceValue: '5'}
+                    ]
+                }
+            ]
+        };
+
+
+        function select(list, display_name, value_name, selected_value) {
+            var s = document.createElement("select");
+            for (var y = 0; y < list.length; y++) {
+                var item = list[y];
+                var o = document.createElement('option');
+                o.innerHTML = item[display_name];
+                o.setAttribute('value', item[value_name]);
+                if (selected_value == item[value_name]) {
+                    o.selected = true;
+                }
+                s.appendChild(o);
+            }
+            return s;
+        }
 
 
 
+
+
+
+        function drawCharacterAbility(pair, i) {
+            var list = GAME.abilities;
+            var selectAbility = select(list, "name", "id", pair.ability);
+            selectAbility.setAttribute("data-index", i);
+            document.getElementById("characterLoad").appendChild(selectAbility);
+            var list = GAME.diceValue;
+            var selectDieValue = select(list, "name", "id", pair.diceValue);
+            selectDieValue.setAttribute("data-index", i);
+            document.getElementById("characterLoad").appendChild(selectDieValue);
+        }
+
+
+        function getCharacterById(id) {
+            for (var i = 0; i < GAME.characters.length; i++) {
+                var selectedCharacter = GAME.characters[i];
+                if (selectedCharacter.id == id) {
+                    return selectedCharacter;
+                }
+            }
+            return undefined;
+        }
+
+
+        function detectCharacterChange(event) {
+            var id = event.target.getAttribute("data-character_id");
+            var character = getCharacterById(id);
+            character.name = event.target.value;
+            console.log(GAME)
+        }
+
+
+
+        function drawCharacter(id) {
+            var character = getCharacterById(id);
+            var input = document.createElement('input');
+            input.setAttribute('value', character.name);
+            input.setAttribute('data-character_id', character.id);
+            input.addEventListener("change", detectCharacterChange);
+            document.getElementById("characterLoad").appendChild(input);
+
+            //loop through player ability/die pairs and call drawCharacterAbility once for each
+            for (var i = 0; i < character.pairs.length; i++) {
+                var pair = character.pairs[i];
+                drawCharacterAbility(pair, i)
+            }
+            var button = document.createElement('button');
+            button.innerHTML = "save";
+            document.getElementById("characterLoad").appendChild(button);
+            button.addEventListener("click", save_character);
+        }
 
 
     </script>
-    <!--<script>-->
-        <!--function load_dice_roller() {-->
-            <!--document.getElementById("content").innerHTML='<object type="text/html" data="dice_roller.html"></object>;-->
-        <!--}-->
-    <!--</script>-->
 
 
 </head>
 <body>
 
-    <div id="Header">This space is for character import window. It will contain a block for a character record.
-    It will also contain two drop down menus; one to adjust the map in map-view and one to select a new character.
+<div id="characterLoad">
+</div>
 
-    </div>
-    <div id="Content1">Game Log window, it will reflect changes to the character during combat.</div>
-    <div id="Content2">
-     <!--<form id="mapForm">Map Select-->
+
+<br>
+
+
+<div id="initiativeButton">
+    <button id="iniButton" value=roll(12) onclick="iniRoll()">Initiative:</button>
+    <span id="iniOutput"></span>&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" style="width: 30px;"/>&nbsp;Target Number
+</div>
+<br>
+
+
+<div id="skills">
+    <input type="radio" name="skill" value="crime"/>Crime(spirit)<br>
+    <input type="radio" name="skill" value="driving"/>Driving(agility)<br>
+    <input type="radio" name="skill" value="fighting"/>Fighting(strength)<br>
+    <input type="radio" name="skill" value="knowledge"/>Knowledge(smarts)<br>
+    <input type="radio" name="skill" value="social"/>Social(vigor)<br>
+</div>
+<br>
+
+<div id="Content2">
     <img id="imageToSwap"/>&emsp;Map Selection:
-        <select id="map" onchange="swapImage()">
-            <option value="">Choose a Map</option>
-            <option id="map1" value="/static/roller_app/images/hinterlands.jpg">Hinterlands</option>
-            <option id="map2" value="/static/roller_app/images/sandpoint.jpg">Sandpoint</option>
-            <option id="map3" value="/static/roller_app/images/lair.jpg">Lair</option>
-        </select>
+    <select id="map" onchange="swapImage()">
+        <option value="">Choose a Map</option>
+        <option class="thumb" id="map1" value="/static/roller_app/images/hinterlands.jpg">Hinterlands</option>
+        <option class="thumb" id="map2" value="/static/roller_app/images/sandpoint.jpg">Sandpoint</option>
+        <option class="thumb" id="map3" value="/static/roller_app/images/lair.jpg">Lair</option>
+    </select>
+</div>
+<br>
 
-    <!--</form>-->
-    </div>
-<!--<div id="dialog_background"><div id="dialog_content"><img id="dialog_image"></div></div>-->
 
 </body>
 <div id="Footer">
-    <table>
-    <tr>
-        <td><input type="reset" value="Reset Roll" id="roll_reset"></td>
-    </tr>
-    <tr>
+    <table id="dieTable">
+        <tr>
+            <td><input type="reset" value="Reset Roll" id="roll_reset"></td>
+        </tr>
+        <tr>
 
-        <td><button class="die" id="d_4"><img src="/static/roller_app/images/d4.jpg" width="70" height="60"/>d4</button></td>
-        <td><button class="die" id="d_6"><img src="/static/roller_app/images/d6.jpg" width="70" height="60"/>d6</button></td>
-        <td><button class="die" id="d_8"><img src="/static/roller_app/images/d8.jpeg" width="70" height="60"/>d8</button></td>
-        <td><button class="die" id="d_10"><img src="/static/roller_app/images/d10.png" width="70" height="60"/>d10</button></td>
-        <td><button class="die" id="d_12"><img src="/static/roller_app/images/d12.jpeg" width="70" height="60"/>d12</button></td>
-        <td><button class="die" id="d_20"><img src="/static/roller_app/images/d20.jpg" width="70" height="60"/>d20</button></td>
-</tr>
-    <tfoot>
-    <tr>
-        <td colspan="6"><div id="rollResultList">Roll Result:<span id="roll_result_data"></span></div></td>
-    </tr>
-    </tfoot>
-</table>
-<!--<div id ="content"><a href ="#" onload="load_dice_roller()"></a> </div>-->
+            <td>
+                <button class="die" id="d_4"><img src="/static/roller_app/images/d4.jpg" width="70" height="60"/>d4
+                </button>
+            </td>
+            <td>
+                <button class="die" id="d_6"><img src="/static/roller_app/images/d6.jpg" width="70" height="60"/>d6
+                </button>
+            </td>
+            <td>
+                <button class="die" id="d_8"><img src="/static/roller_app/images/d8.jpeg" width="70" height="60"/>d8
+                </button>
+            </td>
+            <td>
+                <button class="die" id="d_10"><img src="/static/roller_app/images/d10.png" width="70" height="60"/>d10
+                </button>
+            </td>
+            <td>
+                <button class="die" id="d_12"><img src="/static/roller_app/images/d12.jpeg" width="70" height="60"/>d12
+                </button>
+            </td>
+            <td>
+                <button class="die" id="d_20"><img src="/static/roller_app/images/d20.jpg" width="70" height="60"/>d20
+                </button>
+            </td>
+        </tr>
+        <tfoot>
+        <tr>
+            <td colspan="6">
+                <div id="rollResultList">Roll Result:&nbsp;<span id="roll_result_data"></span></div>
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+</div>
 </html>

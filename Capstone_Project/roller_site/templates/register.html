@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+    body{
+        background-image: url("/static/roller_app/images/orc_warrior.png");
+        background-repeat: no-repeat;
+        background-size: 200px 250px;
+    }
+
+    div{
+        height: 240px;
+        width: 200px;
+        border-width: 2px;
+        border-style: solid;
+        text-align: center;
+        position: relative;
+        left: 200px;
+    }
+
+</style>
+
+</head>
+<body>
+<div>
+<h2>
+    Registration
+</h2>
+<form method="post">
+    {% csrf_token %}
+    <label>
+        <p>Email/Username</p>
+        <input name="username" type="email">
+    </label>
+    <label>
+        <p>Password</p>
+        <input name="password" type="password">
+    </label>
+        <input type="submit" value="register">
+</form>
+</div>
+</body>
+</html>
