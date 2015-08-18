@@ -85,6 +85,7 @@ def api_newCharacter(request):
             die_value_id = int(request.POST["die_value-" + str(i)])
             die_value = AbilityValues.objects.filter(id=die_value_id)[0]
             pcv.die_value = die_value
+
             pcv.save()
         return HttpResponse(str(pc.id), content_type="application/json")
 

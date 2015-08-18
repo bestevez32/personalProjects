@@ -6,68 +6,34 @@
     <link href="static/roller_app/style.css" type="text/css" rel="stylesheet"/>
     <script>
 
-        function new_character() {
-            var xmlhttp = new XMLHttpRequest();
-            var form_data = new FormData();
-            form_data.append("newCharacter", document.getElementById("newCharacter").value);
 
-
-            xmlhttp.open("POST", "/api_new_character/", true);
-            xmlhttp.send(form_data);
-        }
-
-        function character_saved(event) {
-            console.log(event.target.responseText)
+        function init() {
+            document.getElementById("roll_reset").addEventListener("click", reset_roll);
+            getCharacterList()
 
         }
 
-        function save_character() {
-            var xmlhttp = new XMLHttpRequest();
-            var form_data = new FormData();
-            var character = GAME.characters[0];
-            form_data.append("character_name", character.name);
-            form_data.append("id", character.id);
-            for (var i = 0; i < character.pairs.length; i++) {
-                var pair = character.pairs[i];
-                form_data.append("ability-" + i, pair.ability);
-                form_data.append("die_value-" + i, pair.diceValue);
+        document.addEventListener("DOMContentLoaded", init);
+
+        console.log("Head Script");
+
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+            var x = document.getElementsByClassName("die");
+            var i;
+            for (i = 0; i < x.length; i++) {
+                x[i].addEventListener("click", rollClick, true)
             }
-            xmlhttp.onload = character_saved;
-            xmlhttp.open("POST", "/api_new_character/", true);
-            xmlhttp.send(form_data);
+        });
 
 
-            console.log(GAME);
-        }
-
-        function selectCharacter(event){
-            var selectedCharacter = event.target.value;
-            drawCharacter(selectedCharacter);
-            console.log(event.target.value);
-        }
 
 
-        function drawCharacterList(){
-            console.log(GAME.characters);
-            var listElement =  select(GAME.characters, "name", "id", 1);
-            listElement.addEventListener("change", selectCharacter);
-            document.body.appendChild(listElement);
-
-        }
-
-        function characterListLoaded(e){
-            GAME.characters = JSON.parse(e.target.responseText);
-            drawCharacterList();
-        }
-
-        function getCharacterList(){
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onload = characterListLoaded;
-            xmlhttp.open("GET", "/api_new_character/", true);
-            xmlhttp.send();
-        }
 
 
+
+//        These functions are responsible for the dice roller functionality
 
         function roll_result(response) {
             if (response.target.readyState === 4) {
@@ -82,15 +48,6 @@
             element.innerHTML = "&nbsp;";
         }
 
-        function init() {
-            document.getElementById("roll_reset").addEventListener("click", reset_roll);
-            getCharacterList()
-
-        }
-
-        document.addEventListener("DOMContentLoaded", init);
-
-        console.log("Head Script");
         function roll(number) {
             request = new XMLHttpRequest();
             request.onreadystatechange = roll_result;
@@ -110,19 +67,7 @@
             roll(number)
         }
 
-        document.addEventListener("DOMContentLoaded", function () {
-            var x = document.getElementsByClassName("die");
-            var i;
-            for (i = 0; i < x.length; i++) {
-                x[i].addEventListener("click", rollClick, true)
-            }
-        });
-
-        function swapImage() {
-            var image = document.getElementById("imageToSwap");
-            var dropd = document.getElementById("map");
-            image.src = dropd.value;
-        }
+//      Responsible for the initiative roller
 
         function iniRoll() {
             var y = Math.floor(Math.random() * (13 - 2) + 2);
@@ -130,6 +75,14 @@
             if (y >= 10) {
                 console.log("Whats Happening!");
             }
+        }
+
+//        Responsible for the Map Image Change
+
+        function swapImage() {
+            var image = document.getElementById("imageToSwap");
+            var dropd = document.getElementById("map");
+            image.src = dropd.value;
         }
 
 
@@ -151,9 +104,8 @@
                 {id: 5, name: "d12", value: 12}
             ],
 
-            characters: [
-                {
-                    name: "",
+            defaultCharacter:{
+                    name: "New Character",
                     id: 0,
                     "pairs": [
                         {ability: "1", diceValue: '1'},
@@ -162,9 +114,24 @@
                         {ability: "4", diceValue: '4'},
                         {ability: "5", diceValue: '5'}
                     ]
+                },
+
+            characters: [
+                {
+                    name: "",
+                    id: 0,
+                    "pairs": [
+                        {ability: "", diceValue: ''},
+                        {ability: "", diceValue: ''},
+                        {ability: "", diceValue: ''},
+                        {ability: "", diceValue: ''},
+                        {ability: "", diceValue: ''}
+                    ]
                 }
             ]
         };
+
+
 
 
         function select(list, display_name, value_name, selected_value) {
@@ -185,17 +152,42 @@
 
 
 
+        function getCharacterList(){
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onload = characterListLoaded;
+            xmlhttp.open("GET", "/api_newCharacter/", true);
+            xmlhttp.send();
+        }
+
+        function characterListLoaded(e){
+            GAME.characters = JSON.parse(e.target.responseText);
+            GAME.characters.push(GAME.defaultCharacter);
+            drawCharacterList();
+        }
+
+        function drawCharacterList(){
+            console.log(GAME.characters);
+            var listElement =  select(GAME.characters, "name", "id", 1);
+            listElement.addEventListener("change", selectCharacter);
+            document.getElementById("characterSelect").appendChild(listElement);
+        }
 
 
-        function drawCharacterAbility(pair, i) {
-            var list = GAME.abilities;
-            var selectAbility = select(list, "name", "id", pair.ability);
-            selectAbility.setAttribute("data-index", i);
-            document.getElementById("characterLoad").appendChild(selectAbility);
-            var list = GAME.diceValue;
-            var selectDieValue = select(list, "name", "id", pair.diceValue);
-            selectDieValue.setAttribute("data-index", i);
-            document.getElementById("characterLoad").appendChild(selectDieValue);
+
+
+        function new_character() {
+            var xmlhttp = new XMLHttpRequest();
+            var form_data = new FormData();
+            form_data.append("newCharacter", document.getElementById("newCharacter").value);
+            xmlhttp.open("POST", "/api_newCharacter/", true);
+            xmlhttp.send(form_data);
+        }
+
+
+        function selectCharacter(event){
+            var selectedCharacter = event.target.value;
+            drawCharacter(selectedCharacter);
+            console.log(event.target.value);
         }
 
 
@@ -210,33 +202,117 @@
         }
 
 
-        function detectCharacterChange(event) {
-            var id = event.target.getAttribute("data-character_id");
-            var character = getCharacterById(id);
-            character.name = event.target.value;
-            console.log(GAME)
+        function removeCharacter(){
+            var removeEl = document.getElementById("characterLoad");
+            removeEl.innerHTML = "";
         }
 
 
 
         function drawCharacter(id) {
+            var characterElement = document.getElementById("characterLoad");
             var character = getCharacterById(id);
             var input = document.createElement('input');
             input.setAttribute('value', character.name);
-            input.setAttribute('data-character_id', character.id);
+            characterElement.setAttribute('data-character_id', character.id);
             input.addEventListener("change", detectCharacterChange);
-            document.getElementById("characterLoad").appendChild(input);
+            characterElement.appendChild(input);
 
             //loop through player ability/die pairs and call drawCharacterAbility once for each
             for (var i = 0; i < character.pairs.length; i++) {
                 var pair = character.pairs[i];
-                drawCharacterAbility(pair, i)
+                drawCharacterAbility(pair, i);
             }
             var button = document.createElement('button');
             button.innerHTML = "save";
-            document.getElementById("characterLoad").appendChild(button);
+
+            button.setAttribute("data-id", id);
             button.addEventListener("click", save_character);
+            document.getElementById("characterLoad").appendChild(button);
+
+            var remove_button = document.createElement('button');
+            remove_button.innerHTML="remove character";
+            document.getElementById("characterLoad").appendChild(remove_button);
+            remove_button.addEventListener("click", removeCharacter);
         }
+
+
+        function drawCharacterAbility(pair, i) {
+            var list = GAME.abilities;
+            var selectAbility = select(list, "name", "id", pair.ability);
+            selectAbility.setAttribute("data-index", i);
+            selectAbility.addEventListener("change", detectAbilityChange);
+            document.getElementById("characterLoad").appendChild(selectAbility);
+
+            var list = GAME.diceValue;
+            var selectDieValue = select(list, "name", "id", pair.diceValue);
+            selectDieValue.addEventListener("change", detectDiceValueChange);
+            selectDieValue.setAttribute("data-index", i);
+            document.getElementById("characterLoad").appendChild(selectDieValue);
+        }
+
+
+        function detectCharacterChange(event) {
+            console.log(event.target);
+            var id = event.target.parentElement.getAttribute("data-character_id");
+            var character = getCharacterById(id);
+            character.name = event.target.value;
+        }
+
+        function detectAbilityChange(event){
+            console.log(event.target.parentElement);
+            var id = event.target.parentElement.getAttribute("data-character_id");
+            var index = event.target.getAttribute("data-index");
+            var character = getCharacterById(id);
+            console.log(index);
+            console.log(character.pairs);
+            character.pairs[index].ability = event.target.value;
+            console.log(character.pairs);
+        }
+
+        function detectDiceValueChange(event){
+            var id = event.target.parentElement.getAttribute("data-character_id");
+            var index = event.target.getAttribute("data-index");
+            var character = getCharacterById(id);
+            character.pairs[index].diceValue = event.target.value;
+        }
+
+
+        function save_character(e) {
+            var xmlhttp = new XMLHttpRequest();
+            var form_data = new FormData();
+            var id = e.target.getAttribute("data-id");
+            var character = getCharacterById(id);
+            form_data.append("character_name", character.name);
+            form_data.append("id", character.id);
+            for (var i = 0; i < character.pairs.length; i++) {
+                var pair = character.pairs[i];
+                form_data.append("ability-" + i, pair.ability);
+                form_data.append("die_value-" + i, pair.diceValue);
+            }
+            xmlhttp.onload = character_saved;
+            xmlhttp.open("POST", "/api_newCharacter/", true);
+            xmlhttp.send(form_data);
+            xmlhttp.addEventListener("change", detectCharacterChange);
+
+
+            console.log(GAME);
+        }
+
+        function character_saved(event) {
+            console.log(event.target.responseText)
+
+        }
+
+
+
+
+
+
+
+
+
+
 
 
     </script>
@@ -245,7 +321,12 @@
 </head>
 <body>
 
+<div id="characterSelect">
+
+</div>
+
 <div id="characterLoad">
+
 </div>
 
 
@@ -278,6 +359,8 @@
     </select>
 </div>
 <br>
+
+
 
 
 </body>
@@ -321,5 +404,7 @@
         </tr>
         </tfoot>
     </table>
+</div>
+<div>
 </div>
 </html>

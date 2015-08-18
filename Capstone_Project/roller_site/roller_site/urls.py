@@ -23,6 +23,6 @@ urlpatterns = [
     url(r'^api_dice_roll/(?P<number>[0-9]+)/$', "roller_app.views.api_dice_roll"),
     url(r'^login/$', 'roller_app.views.login_view'),
     url(r'^register/$', 'roller_app.views.register_view'),
-    url(r'^api_new_character/$', "roller_app.views.api_newCharacter"),
+    url(r'^api_newCharacter/$', "roller_app.views.api_newCharacter"),
 
 ]
