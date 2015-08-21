@@ -43,6 +43,7 @@
             window.scrollTo(0,0);
             document.getElementById('light').style.display='block';
             document.getElementById('fade').style.display='block';
+
         }
 
 
@@ -50,11 +51,6 @@
             document.getElementById('light').style.display='none';
             document.getElementById('fade').style.display='none';
         }
-
-
-
-
-
 
 
 //        These functions are responsible for the dice roller functionality
@@ -354,6 +350,7 @@
 </div>
 
 
+
 <br>
 
 
@@ -374,7 +371,7 @@
 <br>
 
 <div id="Content2">
-    <img id="imageToSwap"/>&emsp;Map Selection:
+    <img id="imageToSwap" onclick="lightbox_open()"/>&emsp;Map Selection:
     <select id="map" onchange="swapImage()">
 
 
@@ -387,7 +384,6 @@
     </select>
 </div>
 
-<a href="#map" onclick="lightbox_open();">Open Map</a>
 <div id="light"></div>
 <div id="fade" onClick="lightbox_close();"></div>
 <br>
