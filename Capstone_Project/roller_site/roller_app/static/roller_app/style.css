@@ -2,8 +2,8 @@ Html{
     background-color: lightgoldenrodyellow;
     background-image: url("/static/roller_app/images/orc_warrior.png");
     background-repeat: no-repeat;
-    background-size: 200px, 250px;
-    background-position-x: 360px;
+    background-size: 210px, 180px;
+    background-position-x: 380px;
     background-position-y: 100px;
     border: solid;
     width:625px;
@@ -63,8 +63,8 @@ Html{
     text-align: center;
     padding: 20px;
     position: absolute;
-    margin-left: 460px;
-    margin-top: 25px;
+    margin-left: 440px;
+    margin-top: 50px;
 }
 
 .speech-bubble .arrow {
@@ -88,7 +88,10 @@ Html{
     left: -7px;
 }
 
+#characterLoad{
 
+
+}
 
 
 
