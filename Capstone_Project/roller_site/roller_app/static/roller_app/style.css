@@ -52,6 +52,8 @@ Html{
     border:solid;
     height:160px;
     background-size: 60px, 120px;
+    margin-top:-10px;
+
 }
 
 
@@ -89,8 +91,16 @@ Html{
 }
 
 #characterLoad{
+    height:30px;
 
 
+}
+#initiativeButton{
+    margin-top: 1px;
+}
+
+#skills{
+    margin-top: -5px;
 }
 
 
