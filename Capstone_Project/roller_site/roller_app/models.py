@@ -39,3 +39,4 @@ class PCValue(models.Model):
 
     def __str__(self):
         return str(self.character.character_name) + str(self.ability.ability_name) + str(self.die_value.name)
+
