@@ -1,18 +1,21 @@
-Html{
+
+
+
+div.content{
     background-color: lightgoldenrodyellow;
     background-image: url("/static/roller_app/images/orc_warrior.png");
     background-repeat: no-repeat;
-    background-size: 210px, 180px;
-    background-position-x: 380px;
-    background-position-y: 100px;
+    background-size: 35%;
+    background-position-x: 95%;
+    background-position-y: 35%;
     border: solid;
-    width:625px;
+    width:38em;
 }
 
 
 #imageToSwap {
-    height: 175px;
-    width: 350px;
+    height: 10em;
+    width: 23em;
 }
 
 #fade{
@@ -34,10 +37,10 @@ Html{
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 480px;
-    height: 340px;
-    margin-left: -280px;
-    margin-top: -100px;
+    width: 70%;
+    height: 56%;
+    margin-left: -40%;
+    margin-top: -20%;
     padding: 10px;
     border: 2px solid #FFF;
     background: url("/static/roller_app/images/hinterlands.jpg");
@@ -50,9 +53,10 @@ Html{
 #dieTable{
     background-color: palegoldenrod;
     border:solid;
-    height:160px;
-    background-size: 60px, 120px;
-    margin-top:-10px;
+    height: 10em;
+    background-size: 8em, 8em;
+    margin-top:-1em;
+
 
 }
 
@@ -61,12 +65,12 @@ Html{
     background-color: #f8f8f8;
     border: 1px solid #c8c8c8;
     border-radius: 5px;
-    width: 110px;
+    width: 7em;
     text-align: center;
     padding: 20px;
     position: absolute;
-    margin-left: 440px;
-    margin-top: 50px;
+    margin-left: 27em;
+    margin-top: 3em;
 }
 
 .speech-bubble .arrow {
@@ -91,16 +95,16 @@ Html{
 }
 
 #characterLoad{
-    height:30px;
+    height:3em;
 
 
 }
 #initiativeButton{
-    margin-top: 1px;
+    margin-top: -1em;
 }
 
 #skills{
-    margin-top: -5px;
+    margin-top: 1em;
 }
 
 
