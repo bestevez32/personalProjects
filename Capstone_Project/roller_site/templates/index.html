@@ -6,6 +6,7 @@
     <link href="static/roller_app/style.css" type="text/css" rel="stylesheet"/>
     <script>
 
+        window.woundsModifier = 0;
 
         function init() {
             document.getElementById("roll_reset").addEventListener("click", reset_roll);
@@ -18,7 +19,6 @@
         console.log("Head Script");
 
 
-
         document.addEventListener("DOMContentLoaded", function () {
             var x = document.getElementsByClassName("die");
             var i;
@@ -27,38 +27,35 @@
             }
         });
 
-        function changeText(){
-            document.getElementById("newPhrase").innerHTML="Zug Zug";
+        function changeText() {
+            document.getElementById("newPhrase").innerHTML = "Zug Zug";
         }
 
 
-
-
-
         window.document.onkeydown = function (e) {
-            if (!e){
+            if (!e) {
                 e = event;
             }
-            if (e.keyCode == 27){
+            if (e.keyCode == 27) {
                 lightbox_close();
             }
         };
 
-        function lightbox_open(){
-            window.scrollTo(0,0);
-            document.getElementById('light').style.display='block';
-            document.getElementById('fade').style.display='block';
+        function lightbox_open() {
+            window.scrollTo(0, 0);
+            document.getElementById('light').style.display = 'block';
+            document.getElementById('fade').style.display = 'block';
 
         }
 
 
-        function lightbox_close(){
-            document.getElementById('light').style.display='none';
-            document.getElementById('fade').style.display='none';
+        function lightbox_close() {
+            document.getElementById('light').style.display = 'none';
+            document.getElementById('fade').style.display = 'none';
         }
 
 
-//        These functions are responsible for the dice roller functionality
+        //        These functions are responsible for the dice roller functionality
 
 
         function subtractFromDie() {
@@ -71,7 +68,7 @@
             }
         }
 
-        function updateTotal(e){
+        function updateTotal(e) {
             window.woundsModifier = parseInt(this.value);
 //
         }
@@ -111,7 +108,7 @@
             roll(number)
         }
 
-//      Responsible for the initiative roller
+        //      Responsible for the initiative roller
 
         function iniRoll() {
             var y = Math.floor(Math.random() * (13 - 2) + 2);
@@ -122,7 +119,7 @@
         }
 
 
-//        Responsible for the Map Image Change
+        //        Responsible for the Map Image Change
 
         function swapImage() {
             var image = document.getElementById("imageToSwap");
@@ -149,17 +146,17 @@
                 {id: 5, name: "d12", value: 12}
             ],
 
-            defaultCharacter:{
-                    name: "New Character",
-                    id: 0,
-                    "pairs": [
-                        {ability: "1", diceValue: '1'},
-                        {ability: "2", diceValue: '2'},
-                        {ability: "3", diceValue: '3'},
-                        {ability: "4", diceValue: '4'},
-                        {ability: "5", diceValue: '5'}
-                    ]
-                },
+            defaultCharacter: {
+                name: "New Character",
+                id: 0,
+                "pairs": [
+                    {ability: "1", diceValue: '1'},
+                    {ability: "2", diceValue: '2'},
+                    {ability: "3", diceValue: '3'},
+                    {ability: "4", diceValue: '4'},
+                    {ability: "5", diceValue: '5'}
+                ]
+            },
 
             characters: [
                 {
@@ -175,8 +172,6 @@
                 }
             ]
         };
-
-
 
 
         function select(list, display_name, value_name, selected_value) {
@@ -195,29 +190,25 @@
         }
 
 
-
-
-        function getCharacterList(){
+        function getCharacterList() {
             var xmlhttp = new XMLHttpRequest();
             xmlhttp.onload = characterListLoaded;
             xmlhttp.open("GET", "/api_newCharacter/", true);
             xmlhttp.send();
         }
 
-        function characterListLoaded(e){
+        function characterListLoaded(e) {
             GAME.characters = JSON.parse(e.target.responseText);
             GAME.characters.push(GAME.defaultCharacter);
             drawCharacterList();
         }
 
-        function drawCharacterList(){
+        function drawCharacterList() {
             console.log(GAME.characters);
-            var listElement =  select(GAME.characters, "name", "id", 1);
+            var listElement = select(GAME.characters, "name", "id", 1);
             listElement.addEventListener("change", selectCharacter);
             document.getElementById("characterSelect").appendChild(listElement);
         }
-
-
 
 
         function new_character() {
@@ -229,7 +220,7 @@
         }
 
 
-        function selectCharacter(event){
+        function selectCharacter(event) {
             var selectedCharacter = event.target.value;
             drawCharacter(selectedCharacter);
             console.log(event.target.value);
@@ -247,26 +238,21 @@
         }
 
 
-        function removeCharacter(){
+        function removeCharacter() {
             var removeEl = document.getElementById("characterLoad");
             removeEl.innerHTML = "";
         }
-
 
 
         function drawCharacter(id) {
             var characterElement = document.getElementById("characterLoad");
             var character = getCharacterById(id);
             var input = document.createElement('input');
-
+            characterElement.innerHTML = "";
             input.setAttribute('value', character.name);
             characterElement.setAttribute('data-character_id', character.id);
             input.addEventListener("change", detectCharacterChange);
             characterElement.appendChild(input);
-//            if (character.id != this){
-//                characterElement.replaceChild(input,characterElement)
-//            }
-
 
 
             //loop through player ability/die pairs and call drawCharacterAbility once for each
@@ -282,7 +268,7 @@
             document.getElementById("characterLoad").appendChild(button);
 
             var remove_button = document.createElement('button');
-            remove_button.innerHTML="remove character";
+            remove_button.innerHTML = "remove character";
             document.getElementById("characterLoad").appendChild(remove_button);
             remove_button.addEventListener("click", removeCharacter);
         }
@@ -310,7 +296,7 @@
             character.name = event.target.value;
         }
 
-        function detectAbilityChange(event){
+        function detectAbilityChange(event) {
             console.log(event.target.parentElement);
             var id = event.target.parentElement.getAttribute("data-character_id");
             var index = event.target.getAttribute("data-index");
@@ -321,7 +307,7 @@
             console.log(character.pairs);
         }
 
-        function detectDiceValueChange(event){
+        function detectDiceValueChange(event) {
             var id = event.target.parentElement.getAttribute("data-character_id");
             var index = event.target.getAttribute("data-index");
             var character = getCharacterById(id);
@@ -356,16 +342,6 @@
         }
 
 
-
-
-
-
-
-
-
-
-
-
     </script>
 
 
@@ -374,108 +350,107 @@
 <div class="content">
 
 
-<div class="speech-bubble" id ="newPhrase" onclick="changeText()">
-  <div class="arrow bottom right"></div>
-  Welcome Green!
-</div>
+    <div class="speech-bubble" id="newPhrase" onclick="changeText()">
+        <div class="arrow bottom right"></div>
+        Welcome Green!
+    </div>
 
 
+    <div id="characterSelect">
 
-<div id="characterSelect">
+    </div>
 
-</div>
+    <div id="characterLoad">
 
-<div id="characterLoad">
-
-</div>
-
+    </div>
 
 
-<br>
+    <br>
 
 
-<div id="initiativeButton">
-    <button id="iniButton" value=roll(12) onclick="iniRoll()">Initiative:</button>
-    <span id="iniOutput"></span>&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" style="width: 30px;"/>&nbsp;Target Number
-</div>
-<br>
+    <div id="initiativeButton">
+        <button id="iniButton" value=roll(12) onclick="iniRoll()">Initiative:</button>
+        <span id="iniOutput"></span>&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" style="width: 30px;"/>&nbsp;Target
+        Number
+    </div>
+    <br>
 
 
-<div id="wounds">
-    <input type="radio" id = "noWound" name="skill" value=0/>No Wounds<br>
-    <input type="radio" id = "wound3" name="skill" value=-3/>Wound -3
-    <input type="radio" id = "bonus3" name="skill" value=+3/>Bonus +3<br>
-    <input type="radio" id = "wound2" name="skill" value=-2/>Wound -2
-    <input type="radio" id = "bonus2" name="skill" value=+2/>Bonus +2<br>
-    <input type="radio" id = "wound1" name="skill" value=+1/>Wound -1
-    <input type="radio" id = "bonus1" name="skill" value=+1/>Bonus +1<br>
-</div>
-<br>
+    <div id="wounds">
+        <input type="radio" id="noWound" name="skill" checked="checked" value=0/>No Wounds<br>
+        <input type="radio" id="wound3" name="skill" value=-3/>Wound -3
+        <input type="radio" id="bonus3" name="skill" value=+3/>Bonus +3<br>
+        <input type="radio" id="wound2" name="skill" value=-2/>Wound -2
+        <input type="radio" id="bonus2" name="skill" value=+2/>Bonus +2<br>
+        <input type="radio" id="wound1" name="skill" value=+1/>Wound -1
+        <input type="radio" id="bonus1" name="skill" value=+1/>Bonus +1<br>
+    </div>
+    <br>
 
-<div id="Content2">
-    <img id="imageToSwap" onclick="lightbox_open()"/>&emsp;Map Selection:
-    <select id="map" onchange="swapImage()">
+    <div id="Content2">
+        <img id="imageToSwap" onclick="lightbox_open()"/>&emsp;Map Selection:
+        <select id="map" onchange="swapImage()">
 
 
-        <option value="">Choose a Map</option>
-        <option class="thumb" id="map1" value="/static/roller_app/images/hinterlands.jpg">Hinterlands</option>
-        <option class="thumb" id="map2" value="/static/roller_app/images/sandpoint.jpg">Sandpoint</option>
-        <option class="thumb" id="map3" value="/static/roller_app/images/lair.jpg">Lair</option>
-        <option class="thumb" id="map4" value="/static/roller_app/images/Hallway_of_time.jpg">Thime</option>
+            <option value="">Choose a Map</option>
+            <option class="thumb" id="map1" value="/static/roller_app/images/hinterlands.jpg">Hinterlands</option>
+            <option class="thumb" id="map2" value="/static/roller_app/images/sandpoint.jpg">Sandpoint</option>
+            <option class="thumb" id="map3" value="/static/roller_app/images/lair.jpg">Lair</option>
+            <option class="thumb" id="map4" value="/static/roller_app/images/Hallway_of_time.jpg">Thime</option>
 
-    </select>
-</div>
+        </select>
+    </div>
 
-<div id="light"></div>
-<div id="fade" onClick="lightbox_close();"></div>
-<br>
+    <div id="light"></div>
+    <div id="fade" onClick="lightbox_close();"></div>
+    <br>
 
 
     <div id="Footer">
-    <table id="dieTable">
-        <tr>
-            <td><input type="reset" value="Reset Roll" id="roll_reset"></td>
-        </tr>
-        <tr>
+        <table id="dieTable">
+            <tr>
+                <td><input type="reset" value="Reset Roll" id="roll_reset"></td>
+            </tr>
+            <tr>
 
-            <td>
-                <button class="die" id="d_4"><img src="/static/roller_app/images/d4.jpg" width="70" height="60"/>d4
-                </button>
-            </td>
-            <td>
-                <button class="die" id="d_6"><img src="/static/roller_app/images/d6.jpg" width="70" height="60"/>d6
-                </button>
-            </td>
-            <td>
-                <button class="die" id="d_8"><img src="/static/roller_app/images/d8.jpeg" width="70" height="60"/>d8
-                </button>
-            </td>
-            <td>
-                <button class="die" id="d_10"><img src="/static/roller_app/images/d10.png" width="70" height="60"/>d10
-                </button>
-            </td>
-            <td>
-                <button class="die" id="d_12"><img src="/static/roller_app/images/d12.jpeg" width="70" height="60"/>d12
-                </button>
-            </td>
-            <td>
-                <button class="die" id="d_20"><img src="/static/roller_app/images/d20.jpg" width="70" height="60"/>d20
-                </button>
-            </td>
-        </tr>
-        <tfoot>
-        <tr>
-            <td colspan="6">
-                <div id="rollResultList">Roll Result:&nbsp;<span id="roll_result_data"></span></div>
-            </td>
-        </tr>
-        </tfoot>
-    </table>
+                <td>
+                    <button class="die" id="d_4"><img src="/static/roller_app/images/d4.jpg" width="70" height="60"/>d4
+                    </button>
+                </td>
+                <td>
+                    <button class="die" id="d_6"><img src="/static/roller_app/images/d6.jpg" width="70" height="60"/>d6
+                    </button>
+                </td>
+                <td>
+                    <button class="die" id="d_8"><img src="/static/roller_app/images/d8.jpeg" width="70" height="60"/>d8
+                    </button>
+                </td>
+                <td>
+                    <button class="die" id="d_10"><img src="/static/roller_app/images/d10.png" width="70" height="60"/>d10
+                    </button>
+                </td>
+                <td>
+                    <button class="die" id="d_12"><img src="/static/roller_app/images/d12.jpeg" width="70" height="60"/>d12
+                    </button>
+                </td>
+                <td>
+                    <button class="die" id="d_20"><img src="/static/roller_app/images/d20.jpg" width="70" height="60"/>d20
+                    </button>
+                </td>
+            </tr>
+            <tfoot>
+            <tr>
+                <td colspan="6">
+                    <div id="rollResultList">Roll Result:&nbsp;<span id="roll_result_data"></span></div>
+                </td>
+            </tr>
+            </tfoot>
+        </table>
 
-</div>
-<div>
-</div>
     </div>
+    <div>
+    </div>
+</div>
 
 </body>
 </html>
