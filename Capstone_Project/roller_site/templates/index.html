@@ -9,8 +9,8 @@
 
         function init() {
             document.getElementById("roll_reset").addEventListener("click", reset_roll);
-            getCharacterList()
-
+            getCharacterList();
+            subtractFromDie()
         }
 
         document.addEventListener("DOMContentLoaded", init);
@@ -60,11 +60,30 @@
 
 //        These functions are responsible for the dice roller functionality
 
+
+        function subtractFromDie() {
+            var el = document.getElementById('wounds');
+            var wounds = el.getElementsByTagName('input');
+            for (var i = 0, len = wounds.length; i < len; i++) {
+                if (wounds[i].type === 'radio') {
+                    wounds[i].onclick = updateTotal;
+                }
+            }
+        }
+
+        function updateTotal(e){
+            window.woundsModifier = parseInt(this.value);
+//
+        }
+
+
         function roll_result(response) {
             if (response.target.readyState === 4) {
                 var data = JSON.parse(response.target.responseText);
+                var result = parseInt(data.result);
+                var adjusted = result + window.woundsModifier;
                 var element = document.getElementById("roll_result_data");
-                element.innerHTML += data.result + ", ";
+                element.innerHTML += adjusted + ", ";
             }
         }
 
@@ -239,10 +258,16 @@
             var characterElement = document.getElementById("characterLoad");
             var character = getCharacterById(id);
             var input = document.createElement('input');
+
             input.setAttribute('value', character.name);
             characterElement.setAttribute('data-character_id', character.id);
             input.addEventListener("change", detectCharacterChange);
             characterElement.appendChild(input);
+//            if (character.id != this){
+//                characterElement.replaceChild(input,characterElement)
+//            }
+
+
 
             //loop through player ability/die pairs and call drawCharacterAbility once for each
             for (var i = 0; i < character.pairs.length; i++) {
@@ -376,12 +401,14 @@
 <br>
 
 
-<div id="skills">
-    <input type="radio" id = "crime" name="skill" value="crime"/>Crime(spirit)<br>
-    <input type="radio" id = "driving" name="skill" value="driving"/>Driving(agility)<br>
-    <input type="radio" id = "fighting" name="skill" value="fighting"/>Fighting(strength)<br>
-    <input type="radio" id = "knowledge" name="skill" value="knowledge"/>Knowledge(smarts)<br>
-    <input type="radio" id = "social" name="skill" value="social"/>Social(vigor)<br>
+<div id="wounds">
+    <input type="radio" id = "noWound" name="skill" value=0/>No Wounds<br>
+    <input type="radio" id = "wound3" name="skill" value=-3/>Wound -3
+    <input type="radio" id = "bonus3" name="skill" value=+3/>Bonus +3<br>
+    <input type="radio" id = "wound2" name="skill" value=-2/>Wound -2
+    <input type="radio" id = "bonus2" name="skill" value=+2/>Bonus +2<br>
+    <input type="radio" id = "wound1" name="skill" value=+1/>Wound -1
+    <input type="radio" id = "bonus1" name="skill" value=+1/>Bonus +1<br>
 </div>
 <br>
 

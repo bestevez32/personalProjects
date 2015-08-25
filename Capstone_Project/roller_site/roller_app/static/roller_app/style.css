@@ -16,6 +16,7 @@ div.content{
 #imageToSwap {
     height: 10em;
     width: 23em;
+    margin-top: 2em;
 }
 
 #fade{
