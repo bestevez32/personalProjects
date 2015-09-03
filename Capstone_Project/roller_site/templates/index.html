@@ -11,7 +11,8 @@
         function init() {
             document.getElementById("roll_reset").addEventListener("click", reset_roll);
             getCharacterList();
-            subtractFromDie()
+            subtractFromDie();
+            document.getElementById("logout-button").addEventListener("click",logout);
         }
 
         document.addEventListener("DOMContentLoaded", init);
@@ -26,6 +27,17 @@
                 x[i].addEventListener("click", rollClick, true)
             }
         });
+
+
+        function logout() {
+            window.location="/logout_view/";
+        }
+
+
+
+
+
+
 
         function changeText() {
             document.getElementById("newPhrase").innerHTML = "Zug Zug";
@@ -314,6 +326,21 @@
             character.pairs[index].diceValue = event.target.value;
         }
 
+//        function deleteFromDatabase(e) {
+//            var xmlhttp = new XMLHttpRequest();
+//            var form_data = new FormData();
+//            var character = getCharacterById(id);
+//            var id = e.target.getAttribute("data-id");
+//            for (var i = 0; i < character.pairs.length; i++) {
+//                var pair = character.pairs[i];
+//                delete form_data("ability-" + i, pair.ability);
+//                delete form_data("die_value-" + i, pair.diceValue);
+//            }
+//            xmlhttp.addEventListener("change", detectCharacterChange);
+//            return save_character();
+//        }
+
+
 
         function save_character(e) {
             var xmlhttp = new XMLHttpRequest();
@@ -347,6 +374,7 @@
 
 </head>
 <body>
+
 <div class="content">
 
 
@@ -373,6 +401,10 @@
         <span id="iniOutput"></span>&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" style="width: 30px;"/>&nbsp;Target
         Number
     </div>
+
+
+
+
     <br>
 
 
@@ -382,10 +414,12 @@
         <input type="radio" id="bonus3" name="skill" value=+3/>Bonus +3<br>
         <input type="radio" id="wound2" name="skill" value=-2/>Wound -2
         <input type="radio" id="bonus2" name="skill" value=+2/>Bonus +2<br>
-        <input type="radio" id="wound1" name="skill" value=+1/>Wound -1
+        <input type="radio" id="wound1" name="skill" value=-1/>Wound -1
         <input type="radio" id="bonus1" name="skill" value=+1/>Bonus +1<br>
+
     </div>
     <br>
+
 
     <div id="Content2">
         <img id="imageToSwap" onclick="lightbox_open()"/>&emsp;Map Selection:
@@ -409,7 +443,9 @@
     <div id="Footer">
         <table id="dieTable">
             <tr>
-                <td><input type="reset" value="Reset Roll" id="roll_reset"></td>
+                <td colspan="5"><input type="reset" value="Reset Roll" id="roll_reset"></td>
+                <td><button type="button" value="Logout" id="logout-button">Logout</button></td>
+
             </tr>
             <tr>
 
@@ -451,6 +487,8 @@
     <div>
     </div>
 </div>
+
+
 
 </body>
 </html>

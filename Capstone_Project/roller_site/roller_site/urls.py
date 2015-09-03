@@ -24,5 +24,7 @@ urlpatterns = [
     url(r'^login/$', 'roller_app.views.login_view'),
     url(r'^register/$', 'roller_app.views.register_view'),
     url(r'^api_newCharacter/$', "roller_app.views.api_newCharacter"),
+    url(r'^logout_view/$', "roller_app.views.logout_view"),
+
 
 ]

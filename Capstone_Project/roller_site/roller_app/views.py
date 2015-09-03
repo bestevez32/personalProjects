@@ -29,6 +29,9 @@ def login_view(request):
                 login(request, user)
                 return HttpResponseRedirect("/")
 
+        if user is None:
+            return HttpResponseRedirect("/register/")
+
     return render(request, 'login.html', {})
 
 
@@ -38,10 +41,14 @@ def register_view(request):
         user.username = request.POST['username']
         user.set_password(request.POST['password'])
         user.save()
-        return HttpResponseRedirect("/login")
+        return HttpResponseRedirect("/login/")
 
     return render(request, 'register.html', {})
 
+@csrf_exempt
+def logout_view(request):
+    logout(request)
+    return HttpResponseRedirect("/")
 
 def api_dice(request):
     dice = [4, 6, 8, 10, 12, 20]
@@ -70,6 +77,7 @@ def api_newCharacter(request):
         id = int(request.POST["id"])
         if id > 0:
             pc = PlayerCharacter.objects.filter(id=id)[0]
+            pc.delete()
         else:
             pc = PlayerCharacter()
         pc.character_name = request.POST['character_name']
@@ -77,6 +85,9 @@ def api_newCharacter(request):
         for i in range(0, 5):
             pcv = PCValue()
             pcv.character = pc
+
+            # ability_delete_id = int(request.DELETE["ability-" + str(i)])
+            # ability_delete = Abilities.objects.filter(id=ability_id)[id]
 
             ability_id = int(request.POST["ability-" + str(i)])
             ability = Abilities.objects.filter(id=ability_id)[0]
@@ -87,6 +98,9 @@ def api_newCharacter(request):
             pcv.die_value = die_value
 
             pcv.save()
+            print(pcv.id)
+
+
         return HttpResponse(str(pc.id), content_type="application/json")
 
     character_list = PlayerCharacter.objects.all()
