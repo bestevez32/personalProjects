@@ -1,0 +1,500 @@
+C:\Program Files\MySQL\MySQL Server 5.5\bin\mysqld.exe, Version: 5.5.40-log (MySQL Community Server (GPL)). started with:
+TCP Port: 3306, Named Pipe: /tmp/mysql.sock
+Time                 Id Command    Argument
+# Time: 150523 11:28:53
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 388  Rows_examined: 776
+use bestcaredb;
+SET timestamp=1432380533;
+SELECT gl_name, gl_index, gl_value FROM globals ORDER BY gl_name, gl_index;
+# Time: 150523 11:28:54
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.015631  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 3522
+SET timestamp=1432380534;
+SELECT count(*) AS count FROM pnotes WHERE activity = 1  AND deleted != 1  AND assigned_to = 'barretth';
+# Time: 150523 11:29:24
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.015615  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 3522
+SET timestamp=1432380564;
+SELECT count(*) AS count FROM pnotes WHERE activity = 1  AND deleted != 1  AND assigned_to = 'bethb';
+# Time: 150523 11:29:37
+# User@Host: root[root] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 389  Rows_examined: 778
+use jsmdpa_staging;
+SET timestamp=1432380577;
+SELECT gl_name, gl_index, gl_value FROM globals ORDER BY gl_name, gl_index;
+# Time: 150523 11:29:38
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 3522
+use bestcaredb;
+SET timestamp=1432380578;
+SELECT count(*) AS count FROM pnotes WHERE activity = 1  AND deleted != 1  AND assigned_to = 'perlad';
+# Time: 150523 11:29:49
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 3522
+SET timestamp=1432380589;
+SELECT count(*) AS count FROM pnotes WHERE activity = 1  AND deleted != 1  AND assigned_to = 'trentt';
+# Time: 150523 11:29:50
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.015622  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 3522
+SET timestamp=1432380590;
+SELECT count(*) AS count FROM pnotes WHERE activity = 1  AND deleted != 1  AND assigned_to = 'asencionm';
+# Time: 150523 11:30:02
+# User@Host: root[root] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 377  Rows_examined: 754
+use hishouse_staging;
+SET timestamp=1432380602;
+SELECT gl_name, gl_index, gl_value FROM globals ORDER BY gl_name, gl_index;
+# User@Host: root[root] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 73  Rows_examined: 294
+SET timestamp=1432380602;
+SELECT table_id as id FROM users_facility uf join users u on (uf.table_id = u.id AND uf.tablename='users')  WHERE   active = 1  AND uf.facility_id IN(4) UNION SELECT id FROM users WHERE username != '' AND  active = 1  AND facility_id IN(4);
+# User@Host: root[root] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 73  Rows_examined: 294
+SET timestamp=1432380602;
+SELECT table_id as id FROM users_facility uf join users u on (uf.table_id = u.id AND uf.tablename='users')  WHERE   active = 1  AND uf.facility_id IN(5) UNION SELECT id FROM users WHERE username != '' AND  active = 1  AND facility_id IN(5);
+# User@Host: root[root] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 73  Rows_examined: 294
+SET timestamp=1432380602;
+SELECT table_id as id FROM users_facility uf join users u on (uf.table_id = u.id AND uf.tablename='users')  WHERE   active = 1  AND uf.facility_id IN(6) UNION SELECT id FROM users WHERE username != '' AND  active = 1  AND facility_id IN(6);
+# User@Host: root[root] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 73  Rows_examined: 294
+SET timestamp=1432380602;
+SELECT table_id as id FROM users_facility uf join users u on (uf.table_id = u.id AND uf.tablename='users')  WHERE   active = 1  AND uf.facility_id IN(7) UNION SELECT id FROM users WHERE username != '' AND  active = 1  AND facility_id IN(7);
+# User@Host: root[root] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 73  Rows_examined: 294
+SET timestamp=1432380602;
+SELECT table_id as id FROM users_facility uf join users u on (uf.table_id = u.id AND uf.tablename='users')  WHERE   active = 1  AND uf.facility_id IN(8) UNION SELECT id FROM users WHERE username != '' AND  active = 1  AND facility_id IN(8);
+# User@Host: root[root] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 73  Rows_examined: 294
+SET timestamp=1432380602;
+SELECT table_id as id FROM users_facility uf join users u on (uf.table_id = u.id AND uf.tablename='users')  WHERE   active = 1  AND uf.facility_id IN(9) UNION SELECT id FROM users WHERE username != '' AND  active = 1  AND facility_id IN(9);
+# User@Host: root[root] @ localhost [127.0.0.1]
+# Query_time: 0.015631  Lock_time: 0.000000 Rows_sent: 73  Rows_examined: 294
+SET timestamp=1432380602;
+SELECT table_id as id FROM users_facility uf join users u on (uf.table_id = u.id AND uf.tablename='users')  WHERE   active = 1  AND uf.facility_id IN(10) UNION SELECT id FROM users WHERE username != '' AND  active = 1  AND facility_id IN(10);
+# Time: 150523 11:30:12
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.015626  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 3522
+use bestcaredb;
+SET timestamp=1432380612;
+SELECT count(*) AS count FROM pnotes WHERE activity = 1  AND deleted != 1  AND assigned_to = 'linog';
+# Time: 150523 11:30:26
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 3522
+SET timestamp=1432380626;
+SELECT count(*) AS count FROM pnotes WHERE activity = 1  AND deleted != 1  AND assigned_to = 'peterb';
+# Time: 150523 11:30:27
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.002992  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 3522
+SET timestamp=1432380627;
+SELECT count(*) AS count FROM pnotes WHERE activity = 1  AND deleted != 1  AND assigned_to = 'kelis';
+# Time: 150523 11:30:38
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 3522
+SET timestamp=1432380638;
+SELECT count(*) AS count FROM pnotes WHERE activity = 1  AND deleted != 1  AND assigned_to = 'Nathant';
+# Time: 150523 11:32:27
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 3522
+SET timestamp=1432380747;
+select count(*) as cnt from pnotes where assigned_to='kelis' and deleted=0 and message_status='New';
+# Time: 150523 11:32:34
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.015625  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 3522
+SET timestamp=1432380754;
+select count(*) as cnt from pnotes where assigned_to='trentt' and deleted=0 and message_status='New';
+# Time: 150523 11:33:33
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 3522
+SET timestamp=1432380813;
+select count(*) as cnt from pnotes where assigned_to='linog' and deleted=0 and message_status='New';
+# Time: 150523 11:33:46
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 3522
+SET timestamp=1432380826;
+select count(*) as cnt from pnotes where assigned_to='Nathant' and deleted=0 and message_status='New';
+# Time: 150523 11:34:58
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 3522
+SET timestamp=1432380898;
+select count(*) as cnt from pnotes where assigned_to='barretth' and deleted=0 and message_status='New';
+# Time: 150523 11:34:59
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 3522
+SET timestamp=1432380899;
+select count(*) as cnt from pnotes where assigned_to='perlad' and deleted=0 and message_status='New';
+# Time: 150523 11:35:23
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.015613  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 3522
+SET timestamp=1432380923;
+select count(*) as cnt from pnotes where assigned_to='peterb' and deleted=0 and message_status='New';
+# Time: 150523 11:39:17
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 3522
+SET timestamp=1432381157;
+select count(*) as cnt from pnotes where assigned_to='asencionm' and deleted=0 and message_status='New';
+# Time: 150523 11:39:49
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 3522
+SET timestamp=1432381189;
+select count(*) as cnt from pnotes where assigned_to='bethb' and deleted=0 and message_status='New';
+C:\Program Files\MySQL\MySQL Server 5.5\bin\mysqld.exe, Version: 5.5.40-log (MySQL Community Server (GPL)). started with:
+TCP Port: 3306, Named Pipe: /tmp/mysql.sock
+Time                 Id Command    Argument
+# Time: 150523 11:40:14
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.015622  Lock_time: 0.000000 Rows_sent: 388  Rows_examined: 776
+use bestcaredb;
+SET timestamp=1432381214;
+SELECT gl_name, gl_index, gl_value FROM globals ORDER BY gl_name, gl_index;
+# Time: 150523 11:40:15
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 3522
+SET timestamp=1432381215;
+SELECT count(*) AS count FROM pnotes WHERE activity = 1  AND deleted != 1  AND assigned_to = 'linog';
+# Time: 150523 11:40:27
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 3522
+SET timestamp=1432381227;
+SELECT count(*) AS count FROM pnotes WHERE activity = 1  AND deleted != 1  AND assigned_to = 'peterb';
+# Time: 150523 11:40:29
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 3522
+SET timestamp=1432381229;
+SELECT count(*) AS count FROM pnotes WHERE activity = 1  AND deleted != 1  AND assigned_to = 'kelis';
+# Time: 150523 11:40:41
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 3522
+SET timestamp=1432381241;
+SELECT count(*) AS count FROM pnotes WHERE activity = 1  AND deleted != 1  AND assigned_to = 'Nathant';
+# Time: 150523 11:40:55
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 3522
+SET timestamp=1432381255;
+SELECT count(*) AS count FROM pnotes WHERE activity = 1  AND deleted != 1  AND assigned_to = 'barretth';
+# Time: 150523 11:41:11
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 301
+SET timestamp=1432381271;
+select distinct name from groups;
+# Time: 150523 11:41:23
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 300
+SET timestamp=1432381283;
+select * from groups where user='angelae' and name='Default';
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 3522
+SET timestamp=1432381283;
+select count(*) as cnt from pnotes where assigned_to='angelae' and deleted=0 and message_status='New';
+# Time: 150523 11:41:24
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 3522
+SET timestamp=1432381284;
+SELECT count(*) AS count FROM pnotes WHERE activity = 1  AND deleted != 1  AND assigned_to = 'angelae';
+# Time: 150523 11:41:25
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.015628  Lock_time: 0.000000 Rows_sent: 154  Rows_examined: 2462
+SET timestamp=1432381285;
+select r.* from registry r LEFT OUTER JOIN forms_workflow f ON r.workflow_name = f.workflow_name  WHERE  (f.active= 1 OR r.workflow_name = '') AND r.state like "1" order by substring_index(r.name,':',1), r.priority, r.name;
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 258
+SET timestamp=1432381285;
+SELECT COUNT(id) AS cnt FROM registry WHERE directory='bop_sign_in_out_log' AND state='1' AND workflow_name='';
+# Time: 150523 11:41:28
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 106  Rows_examined: 420
+SET timestamp=1432381288;
+select distinct id, username, lname, fname, authorized, info, facility from users where (username != '' OR lname = 'No Provider') and active = 1 and id like '%'  AND authorized = 1 AND calendar = 1  ORDER BY lname, fname;
+# Time: 150523 11:41:29
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 221  Rows_examined: 442
+SET timestamp=1432381289;
+SELECT pc_catid,pc_catname,pc_catcolor,pc_catdesc,
+            pc_recurrtype,pc_recurrspec,pc_recurrfreq,pc_duration,
+            pc_dailylimit,pc_end_date_flag,pc_end_date_type,pc_end_date_freq,
+            pc_end_all_day,pc_cattype,pc_cpt,facility_id FROM openemr_postcalendar_categories
+            ORDER BY pc_catname;
+# Time: 150523 11:41:30
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.015627  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 3522
+SET timestamp=1432381290;
+SELECT count(*) AS count FROM pnotes WHERE activity = 1  AND deleted != 1  AND assigned_to = 'bethb';
+# Time: 150523 11:41:41
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.015630  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 3522
+SET timestamp=1432381301;
+SELECT count(*) AS count FROM pnotes WHERE activity = 1  AND deleted != 1  AND assigned_to = 'perlad';
+# Time: 150523 11:41:47
+# User@Host: root[root] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 389  Rows_examined: 778
+use jsmdpa_staging;
+SET timestamp=1432381307;
+SELECT gl_name, gl_index, gl_value FROM globals ORDER BY gl_name, gl_index;
+# Time: 150523 11:41:48
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.027886  Lock_time: 0.000000 Rows_sent: 2  Rows_examined: 7122
+use bestcaredb;
+SET timestamp=1432381308;
+SELECT *, DATE_FORMAT(DOB,'%m/%d/%Y') as DOB_TS FROM patient_data WHERE lname like 'barnett%'  ORDER BY lname, fname ASC LIMIT 0, 100;
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.030990  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 7120
+SET timestamp=1432381308;
+SELECT count(*) as count FROM patient_data WHERE lname like 'barnett%';
+# Time: 150523 11:41:55
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 3522
+SET timestamp=1432381315;
+SELECT count(*) AS count FROM pnotes WHERE activity = 1  AND deleted != 1  AND assigned_to = 'trentt';
+# Time: 150523 11:41:56
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 3522
+SET timestamp=1432381316;
+SELECT count(*) AS count FROM pnotes WHERE activity = 1  AND deleted != 1  AND assigned_to = 'asencionm';
+# Time: 150523 11:41:57
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 60  Rows_examined: 162
+SET timestamp=1432381317;
+SELECT * FROM `clinical_rules` WHERE `pid`=0 ORDER BY `id`;
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 258
+SET timestamp=1432381317;
+SELECT count(*) AS count FROM registry WHERE directory = 'vitals' AND state = 1;
+# Time: 150523 11:41:58
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.187935  Lock_time: 0.062841 Rows_sent: 1  Rows_examined: 6389
+SET timestamp=1432381318;
+SELECT count(*) as cnt FROM patient_history WHERE pid =7294;
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.015658  Lock_time: 0.015658 Rows_sent: 0  Rows_examined: 466
+SET timestamp=1432381318;
+select * from patient_guardian_details where pid='7294' order by guardian_name;
+# Time: 150523 11:41:59
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 1.096981  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 164985
+SET timestamp=1432381319;
+SELECT e.pc_title, e.pc_endDate, e.pc_startTime, e.pc_hometext, e.pc_catid, u.fname, u.lname, u.mname, c.pc_catname, a.event_date, MIN(a.event_date) as event_min_date FROM group_session_attendance AS a, openemr_postcalendar_events AS e, users AS u,    openemr_postcalendar_categories AS c WHERE a.ope_eid = e.pc_eid AND u.id = e.pc_aid AND e.pc_catid = c.pc_catid AND a.pid = '7294' AND a.event_date >= '2015-05-23' GROUP BY a.ope_eid ORDER BY e.pc_eventDate, e.pc_startTime;
+# Time: 150523 11:42:00
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 1638
+SET timestamp=1432381320;
+SELECT p.id,p.date,p.body,p.user,p.title,p.assigned_to FROM demo_notes AS p  LEFT JOIN users u ON p.user = u.username WHERE date LIKE '%%' AND pid LIKE '7294' AND p.pid != p.user AND deleted != 1 AND activity = 1 ORDER BY p.date DESC  LIMIT 0, 3;
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.015625  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 3522
+SET timestamp=1432381320;
+SELECT id,date,body,user,title,assigned_to,message_status FROM pnotes AS p WHERE date LIKE '%%' AND pid LIKE '7294' AND p.pid != p.user AND deleted != 1 AND activity = 1 ORDER BY date DESC LIMIT 0, 3;
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 3522
+SET timestamp=1432381320;
+SELECT id,date,body,user,title,assigned_to,pid FROM pnotes AS p WHERE date LIKE '%%' AND pid LIKE '7294' AND p.pid = p.user AND deleted != 1 AND activity = 1 ORDER BY date DESC LIMIT 0, 3;
+# Time: 150523 11:42:03
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 253
+SET timestamp=1432381323;
+SELECT certifications, footnote1, signature_image FROM signatures WHERE user_id = 293 AND ('2015-05-23' BETWEEN date_created AND IF(till IS NULL,'2015-05-23',till));
+# Time: 150523 11:42:07
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 1.291960  Lock_time: 0.046919 Rows_sent: 0  Rows_examined: 13375
+SET timestamp=1432381327;
+SELECT p.fname, p.mname, p.lname, IFNULL(u.username,'patient') as username,pt.transaction_id, pt.date, pt.pid,pt.form_id,pt.is_template, f.form_name, f.file_name, cft.form_signature, pt.signoff_name, pt.signoff_name1, pt.patient_signature_image, pt.patient_signature_image1 FROM patient_consent_transactions AS pt LEFT JOIN users AS u ON pt.uid=u.id INNER JOIN patient_consent_forms AS f ON pt.form_id=f.id LEFT JOIN consent_form_templates cft ON f.form_name=cft.form_name INNER JOIN patient_data AS p ON pt.pid=p.pid WHERE f.template_type = 'form' AND pt.pid =7294 AND pt.encounter='570948';
+# Time: 150523 11:42:10
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 134
+SET timestamp=1432381330;
+SELECT field_titles FROM forms_completion_criteria WHERE directory = 'vitals' AND DATE('2015-05-23 02:05:51') BETWEEN from_date AND IF(to_date IS NULL, '2015-05-23', to_date);
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 8815
+SET timestamp=1432381330;
+SELECT * FROM form_bc_clinicalopiatewithdrawalscale_form as op where op.pid = 7294 and op.vitals_id = 0;
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.015626  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 11500
+SET timestamp=1432381330;
+SELECT * FROM form_bc_alcohol_ciwaa as alc where alc.pid = 7294 and alc.vitals_id = 0;
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 253
+SET timestamp=1432381330;
+SELECT signature_id, signature_image FROM signatures WHERE user_id = 293;
+# Time: 150523 11:42:39
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 253
+SET timestamp=1432381359;
+SELECT signature_id FROM signatures WHERE user_id = 293 AND till IS NULL;
+# Time: 150523 11:43:17
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 134
+SET timestamp=1432381397;
+SELECT field_names,block_billing,count(name) as cnt FROM forms_completion_criteria WHERE directory = 'vitals' AND DATE('2015-05-23 02:05:51') BETWEEN from_date AND IF(to_date IS NULL, '2015-05-23', to_date);
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 258
+SET timestamp=1432381397;
+SELECT priority FROM registry WHERE workflow_name='BC Detox' AND directory ='vitals';
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 259
+SET timestamp=1432381397;
+SELECT * FROM registry WHERE priority > 6 and workflow_name='BC Detox' AND directory NOT IN ('adult_psychiatric_assessment','psychiatric_progress_note','psychiatric_initial_evaluation','physicians_note')  order by priority limit 1;
+# Time: 150523 11:47:27
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 3522
+SET timestamp=1432381647;
+select count(*) as cnt from pnotes where assigned_to='kelis' and deleted=0 and message_status='New';
+# Time: 150523 11:47:35
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 3522
+SET timestamp=1432381655;
+select count(*) as cnt from pnotes where assigned_to='trentt' and deleted=0 and message_status='New';
+# Time: 150523 11:48:34
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 3522
+SET timestamp=1432381714;
+select count(*) as cnt from pnotes where assigned_to='linog' and deleted=0 and message_status='New';
+# Time: 150523 11:48:46
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 3522
+SET timestamp=1432381726;
+select count(*) as cnt from pnotes where assigned_to='Nathant' and deleted=0 and message_status='New';
+# Time: 150523 11:49:58
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 3522
+SET timestamp=1432381798;
+select count(*) as cnt from pnotes where assigned_to='barretth' and deleted=0 and message_status='New';
+# Time: 150523 11:49:59
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 3522
+SET timestamp=1432381799;
+select count(*) as cnt from pnotes where assigned_to='perlad' and deleted=0 and message_status='New';
+# Time: 150523 11:50:23
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 3522
+SET timestamp=1432381823;
+select count(*) as cnt from pnotes where assigned_to='peterb' and deleted=0 and message_status='New';
+# Time: 150523 11:54:18
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 3522
+SET timestamp=1432382058;
+select count(*) as cnt from pnotes where assigned_to='asencionm' and deleted=0 and message_status='New';
+# Time: 150523 11:54:50
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 3522
+SET timestamp=1432382090;
+select count(*) as cnt from pnotes where assigned_to='bethb' and deleted=0 and message_status='New';
+# Time: 150523 12:02:27
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.046855  Lock_time: 0.015606 Rows_sent: 1  Rows_examined: 711
+SET timestamp=1432382547;
+SELECT mots_results_file_name FROM mots_batch_submission WHERE mots_results_file_name like '%SERVICE00000000021083120150309154346RESULTS%';
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 711
+SET timestamp=1432382547;
+SELECT mots_results_file_name FROM mots_batch_submission WHERE mots_results_file_name like '%SERVICE00000000021083120150309154407RESULTS%';
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 711
+SET timestamp=1432382547;
+SELECT mots_results_file_name FROM mots_batch_submission WHERE mots_results_file_name like '%SERVICE00000000021083120150309155005RESULTS%';
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 711
+SET timestamp=1432382547;
+SELECT mots_results_file_name FROM mots_batch_submission WHERE mots_results_file_name like '%SERVICE00000000021083120150309155015RESULTS%';
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 711
+SET timestamp=1432382547;
+SELECT mots_results_file_name FROM mots_batch_submission WHERE mots_results_file_name like '%SERVICE00000000021083120150309155131RESULTS%';
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 711
+SET timestamp=1432382547;
+SELECT mots_results_file_name FROM mots_batch_submission WHERE mots_results_file_name like '%SERVICE00000000021083120150309155142RESULTS%';
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 711
+SET timestamp=1432382547;
+SELECT mots_results_file_name FROM mots_batch_submission WHERE mots_results_file_name like '%SERVICE00000000021083120150309155248RESULTS%';
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 711
+SET timestamp=1432382547;
+SELECT mots_results_file_name FROM mots_batch_submission WHERE mots_results_file_name like '%SERVICE00000000021083120150309155256RESULTS%';
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 711
+SET timestamp=1432382547;
+SELECT mots_results_file_name FROM mots_batch_submission WHERE mots_results_file_name like '%SERVICE00000000021083120150310080818RESULTS%';
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 711
+SET timestamp=1432382547;
+SELECT mots_results_file_name FROM mots_batch_submission WHERE mots_results_file_name like '%SERVICE00000000021083120150401123308RESULTS%';
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 711
+SET timestamp=1432382547;
+SELECT mots_results_file_name FROM mots_batch_submission WHERE mots_results_file_name like '%SERVICE00000000021083120150401123329RESULTS%';
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 711
+SET timestamp=1432382547;
+SELECT mots_results_file_name FROM mots_batch_submission WHERE mots_results_file_name like '%SERVICE00000000021083120150425023224RESULTS%';
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 711
+SET timestamp=1432382547;
+SELECT mots_results_file_name FROM mots_batch_submission WHERE mots_results_file_name like '%SERVICE00000000021083120150426165135RESULTS%';
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 711
+SET timestamp=1432382547;
+SELECT mots_results_file_name FROM mots_batch_submission WHERE mots_results_file_name like '%SERVICE00000000021083120150504084233RESULTS%';
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.015610  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 711
+SET timestamp=1432382547;
+SELECT mots_results_file_name FROM mots_batch_submission WHERE mots_results_file_name like '%SERVICE00000000021083120150504084408RESULTS%';
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 711
+SET timestamp=1432382547;
+SELECT mots_results_file_name FROM mots_batch_submission WHERE mots_results_file_name like '%SERVICE00000000021083120150504084518RESULTS%';
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 711
+SET timestamp=1432382547;
+SELECT mots_results_file_name FROM mots_batch_submission WHERE mots_results_file_name like '%SERVICE00000000021083120150504084734RESULTS%';
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 711
+SET timestamp=1432382547;
+SELECT mots_results_file_name FROM mots_batch_submission WHERE mots_results_file_name like '%SERVICE00000000021084820150504082927RESULTS%';
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 711
+SET timestamp=1432382547;
+SELECT mots_results_file_name FROM mots_batch_submission WHERE mots_results_file_name like '%SERVICE00000000021084820150504083020RESULTS%';
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 2  Rows_examined: 711
+SET timestamp=1432382547;
+SELECT mots_results_file_name FROM mots_batch_submission WHERE mots_results_file_name like '%SERVICE00000000021084820150504083214RESULTS%';
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 711
+SET timestamp=1432382547;
+SELECT mots_results_file_name FROM mots_batch_submission WHERE mots_results_file_name like '%SERVICE000000000228595201503311611050RESULTS%';
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 711
+SET timestamp=1432382547;
+SELECT mots_results_file_name FROM mots_batch_submission WHERE mots_batch_id = '' and mots_results_file_name = '';
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.281237  Lock_time: 0.062535 Rows_sent: 0  Rows_examined: 36715
+SET timestamp=1432382547;
+SELECT mots_save_id, mots_bg_status_id FROM mots_service_submission_log WHERE mots_batch_id  = '' AND mots_status = 'Submitted';
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.124996  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 711
+SET timestamp=1432382547;
+UPDATE mots_batch_submission SET mots_results_file_name = 'SERVICE000000000228595201503311611050RESULTS' WHERE mots_batch_id = '';
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.015635  Lock_time: 0.000000 Rows_sent: 3  Rows_examined: 711
+SET timestamp=1432382547;
+SELECT mots_results_file_name FROM mots_batch_submission WHERE mots_results_file_name like '%SERVICE00000000022859520150331161105RESULTS%';
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 711
+SET timestamp=1432382547;
+SELECT mots_results_file_name FROM mots_batch_submission WHERE mots_results_file_name like '%SERVICE00000000022859520150426170228RESULTS%';
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 711
+SET timestamp=1432382547;
+SELECT mots_results_file_name FROM mots_batch_submission WHERE mots_results_file_name like '%SERVICE00000000022859520150504083520RESULTS%';
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 711
+SET timestamp=1432382547;
+SELECT mots_results_file_name FROM mots_batch_submission WHERE mots_results_file_name like '%SERVICE00000050060312520150424145743RESULTS%';
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 711
+SET timestamp=1432382547;
+SELECT mots_results_file_name FROM mots_batch_submission WHERE mots_results_file_name like '%SERVICE00000050060312520150424153301RESULTS%';
+# User@Host: mysqluser[mysqluser] @ localhost [127.0.0.1]
+# Query_time: 0.000000  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 711
+SET timestamp=1432382547;
+SELECT mots_results_file_name FROM mots_batch_submission WHERE mots_results_file_name like '%SERVICE00000050060312520150426165324RESULTS%';
