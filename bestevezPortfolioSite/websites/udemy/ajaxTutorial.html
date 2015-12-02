@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <title>Title</title>
+
+    <style>
+
+
+
+        #textBox{
+            height:30px;
+            width:560px;
+            border:2px solid red;
+            text-align: center;
+        }
+
+        #text{
+            margin-top: -1px;
+        }
+
+
+        #circle{
+            width:200px;
+            height:200px;
+            background-color:green;
+            border-radius:100px;
+            margin-top:10px;
+            margin-bottom: 10px;
+
+        }
+
+        .squares{
+            width:300px;
+            height:300px;
+            background-color: red;
+            margin-top:10px;
+        }
+
+    </style>
+
+</head>
+
+
+
+<body>
+  
+  <h1>Asyncronous JavaScript and XML</h1>
+  
+  <h2>AJAX TUTORIAL:</h2>
+
+    <div id="textBox">
+
+        <p id="text">This is some text</p>
+
+    </div>
+
+
+
+    <div id="fading">
+
+        <button id="fadeOut">Fade Out</button>
+
+        <button id="fadeIn">Fade In</button>
+    </div>
+
+    <div id="circle"></div>
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/P5QTFDxX2yE" frameborder="0" allowfullscreen>
+    </iframe>
+
+
+
+
+
+
+    <script>
+    
+    //AJAX Tutorial: AJAX allows you to load content into a page without reloading.
+
+      
+      //Call the AJAX function: $ == string
+      //This code is an AJAX call, .done is a callback function that alerts when AJAX is loaded
+      
+      $.ajax({
+        
+        url:"test.html"
+        
+      }).done(function(data){
+        
+        alert(data);
+        
+      });
+      
+      //AJAX Function to change h1 text to content in test.html
+      
+     $.ajax({
+       
+       url:"test.html"
+       
+     }).done(function(data){
+       
+       $("h1").html(data);
+       
+     });
+      
+      //AJAX Function to append h2 text to content in test.html
+      
+      $ajax({
+        
+        url:"test.html"
+        
+      }).done(function(data){
+        
+        $("h2").append(data);
+        
+      });
+      
+      
+      
+      
+      
+    //JQUERY Tutorial:
+    
+        $("#circle").click(function(){
+            $(this).animate({
+                width:"560px",
+                height:"10px",
+                marginTop:"25px"
+            },1500)
+
+        });
+
+        $("#fadeOut").click(function(){
+           $("#text").fadeOut(2000);
+        });
+
+        $("#fadeIn").click(function(){
+            $("#text").fadeIn(2000);
+        });
+
+
+
+
+
+    </script>
+
+</body>
+</html>
